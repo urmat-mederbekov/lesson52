@@ -3,6 +3,7 @@ package kz.attractorschool.moviereviewrr.controller;
 import kz.attractorschool.moviereviewrr.repository.MovieRepository;
 import kz.attractorschool.moviereviewrr.repository.ReviewRepository;
 import kz.attractorschool.moviereviewrr.repository.UserRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -13,15 +14,18 @@ import org.springframework.web.bind.annotation.PathVariable;
 @org.springframework.stereotype.Controller
 public class Controller {
     Sort s = Sort.by(Sort.Order.asc("title"));
-
+    @Autowired
     MovieRepository mr;
+    @Autowired
 
     ReviewRepository rr;
+    @Autowired
 
     UserRepository ur;
 
     @GetMapping("/movies")
     public String getMovie(Model model) {
+
         model.addAttribute("movies", mr.findAll(s));
         return "movies";
     }

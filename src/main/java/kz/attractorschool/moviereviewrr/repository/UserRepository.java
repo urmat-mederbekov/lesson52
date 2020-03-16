@@ -11,5 +11,5 @@ import java.util.List;
 @Repository
 public interface UserRepository extends CrudRepository<User, String> {
     List<User> findAll(Sort s);
-    List<List> findAllByNameContaining(String name);
+    List<User> findAllByNameContaining(String name);
 }
